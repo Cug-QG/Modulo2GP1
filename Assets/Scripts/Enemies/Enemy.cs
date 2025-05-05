@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
         if (currentHP <= 0) 
         {
             GameManager.Instance.AddPoints(data.Points);
+            GameManager.Instance.AddCoins(data.Coins);
             WavesManager.Instance.livingEnemies.Remove(gameObject);
             Destroy(gameObject);
         }

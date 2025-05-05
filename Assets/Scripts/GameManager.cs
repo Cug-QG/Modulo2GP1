@@ -22,10 +22,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameHP;
 
     private float points;
+    [SerializeField] private float coins;
     private bool playing;
 
     private void Start()
     {
+        UIManager.Instance.SetHP(gameHP);
+        UIManager.Instance.SetCoins(coins);
         PauseGame();
     }
 
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
     public void DecreseHP(float dmg)
     {
         gameHP -= dmg;
+        UIManager.Instance.SetHP(gameHP);
         if (gameHP <= 0) { GameOver(); }
     }
 
@@ -78,6 +82,19 @@ public class GameManager : MonoBehaviour
         points += value;
         UIManager.Instance.SetPointsCounter(points);
     }
+
+    public float GetCoins() { return coins; }
+
+    public void AddCoins(float value)
+    {
+        coins += value;
+        UIManager.Instance.SetCoins(coins);
+    }
+
+    public void Purchase(float value) 
+    { 
+        coins -= value; 
+        UIManager.Instance.SetCoins(coins); }
 
     public bool GetGameStatus() { return playing; }
 }

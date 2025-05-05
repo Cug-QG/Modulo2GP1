@@ -29,12 +29,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI waveCounter;
     [SerializeField] TextMeshProUGUI pointsCounter;
     [SerializeField] TextMeshProUGUI afterDeathPoints;
+    [SerializeField] TextMeshProUGUI HP;
+    [SerializeField] TextMeshProUGUI coins;
+    [SerializeField] TextMeshProUGUI info;
 
     public void TogglePauseMenu(bool isActive) => pauseMenu.SetActive(isActive);
     public void ToggleGameOverMenu(bool isActive) => gameOverMenu.SetActive(isActive);
     public void SetWaveCounter(float value) { waveCounter.text = "Wave: " + value; }
-    public void SetPointsCounter(float value) { pointsCounter.text = "" + value; }
+    public void SetPointsCounter(float value) { pointsCounter.text = "Points: " + value; }
     public void SetADPointsCounter(float value) { afterDeathPoints.text = "Points: " + value; }
+    public void SetHP(float value) { HP.text = "HP: " + value; }
+    public void SetCoins(float value) { coins.text = "Coins: " + value; }
+    public void SetInfo(string input) { info.text = input; }
 
     private bool placing = false;
     private GameObject objectToDraw;

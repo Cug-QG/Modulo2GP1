@@ -18,7 +18,8 @@ public enum EffectType
     BoostDamage,
     SlowEnemy,
     StunEnemy,
-    PoisonEnemy
+    PoisonEnemy,
+    BoostRange
 }
 
 public enum StatusType

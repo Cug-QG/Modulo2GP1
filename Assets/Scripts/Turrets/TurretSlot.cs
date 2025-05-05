@@ -13,6 +13,7 @@ public class TurretSlot : MonoBehaviour
     {
         if (!Spawnable(turret)) { return; }
         GameObject turretInstance = Instantiate(turret, spawnPoint.position, Quaternion.identity);
+        GameManager.Instance.Purchase(turretInstance.GetComponent<Placeable>().GetValue());
         AssignPrefab(turret, turretInstance);
         AssignSlot(turretInstance);
         turrets.Add(turretInstance);
@@ -70,6 +71,8 @@ public class TurretSlot : MonoBehaviour
 
     public void DestroyTurret(GameObject turret)
     {
+        GameManager.Instance.AddCoins(turret.GetComponent<Placeable>().GetValue());
+        turret.GetComponent<Placeable>().HideRange();
         RemoveEffects();
         turrets.Remove(turret);
         spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 1, spawnPoint.position.z);
